@@ -1,0 +1,89 @@
+const url = 'https://datadc.netlify.app/data/onthisday/onthisday.json';
+let data = {};
+var loadDataFinish = false;
+const dataWaktu = new Date();
+
+async function fetchData(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        const jsonData = await response.json();
+        return jsonData;
+    } catch (error) {
+        console.error('There has been a problem with your fetch operation:', error);
+    }
+}
+
+(async () => {
+    data = await fetchData(url);
+    var theResult = '';
+
+    var whattngl;
+
+    if (document.getElementById('bodyToday')) {
+        whattngl = 0;
+    } else if (document.getElementById('bodyTomorrow')) {
+        whattngl = 1;
+    } else if (document.getElementById('bodyYesterday')) {
+        whattngl = -1;
+    } else {
+        whattngl = 0;
+    }
+
+    for (i = 0; i < data.length; i++) {
+        var judul_data = data[i].nama_peristiwa;
+        var deskripsi_data = data[i].desc_peristiwa;
+        var waktu_tanggal = data[i].waktu.split("-")[0];
+        var waktu_bulan = data[i].waktu.split("-")[1];
+        var waktu_tahun = data[i].waktu.split("-")[2];
+        var waktu_full = data[i].waktu;
+
+        if (waktu_tanggal == (dataWaktu.getDate() + whattngl) && waktu_bulan == (dataWaktu.getMonth() + 1)) {
+            theResult += `
+                <div class="bg-transparent w-full h-auto flex justify-center mt-6 mb-8">
+                    <div class="bg-transparent w-[20%]">                
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Several_Cartons.jpg/120px-Several_Cartons.jpg" class="w-full mt-[5px]" alt="${waktu_full}">
+                    </div>
+                    <div class="bg-transparent w-[80%] p-0 pl-6">
+                        <div>
+                            <h3 class="text-[18px] text-blue-400 font-bold mb-1">[ ${waktu_tahun} ] [ ${dataWaktu.getFullYear() - waktu_tahun} Years ago ] - ${judul_data}</h3>
+                        </div>
+                        <div>
+                            <p class="text-[14px] md:text-[16px] text-justify [text-justify:inter-word] break-words hyphens-auto">${deskripsi_data}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+    }
+
+    if (theResult === '') {
+        theResult += `
+                <div class="bg-transparent w-full h-auto flex justify-center mt-6 mb-8">
+                    <div class="bg-transparent w-[20%]">                
+                    </div>
+                    <div class="bg-transparent w-[80%] p-0 pl-6">
+                        <div>
+                            <h3 class="text-[18px] text-blue-400 font-bold mb-1">No data found!</h3>
+                        </div>
+                        <div>
+                            <p>Tidak ada peristiwa/kejadian yang tercatat hari ini! Mungkin, kejadian yang terjadi pada tanggal hari ini akan ditambahkan di masa yang akan datang...</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+    }
+    
+    
+    document.getElementById('justtoday').innerHTML = theResult;
+
+    loadDataFinish = true;
+    finishLoadData();
+})();
+
+function finishLoadData() {
+    document.getElementById('load').style.opacity = 0;
+}

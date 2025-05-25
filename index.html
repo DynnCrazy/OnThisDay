@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>On This Day</title>
+    <link href="/Ast/Style/style.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/typeit@8.7.1/dist/index.umd.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/Ast/Script/script1.js"></script>
+</head>
+<body class="font bg-[#011024]">
+    <div class="fixed top-0 left-0 w-full h-[300vh] bg-[#011024] opacity-0 animasiLoad" id="load"></div>
+
+    <div class="bg-[#011024] w-full h-[100vh]">
+        <div class="bg-transparent w-full h-[10vh] flex border-b-2 border-[#ffffff05]" id="head">
+        </div>
+
+        <div class="bg-transparent w-[100%] h-[55vh] flex justify-center items-center">
+            <div class="bg-transparent w-auto h-auto">
+                <h1 class="text-3xl md:text-4xl font-bold text-center tracking-wider mb-14 ml-5 mr-5" id="typing">
+                </h1>
+                <h1 class="text-[26px] md:text-3xl font-bold text-center tracking-wider">
+                    <span class="bg-blue-400 p-1 pl-4 pr-4" id="thewaktu">Waktu</span>
+                </h1>
+            </div>
+        </div>
+        
+        <div class="w-[100%] h-[50vh] md:h-[100vh] bg-blue-400 rounded-t-full p-[15vh] shadow-[0_0_20px_black] mt-[10vh] md:mt-0">
+            <div class="bg-transparent w-full h-[10vh] flex justify-center items-center mt-[-5vh] md:mt-0">
+                <button class="tracking-[0.3em]">Scroll untuk melihat!</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        new TypeIt("#typing", {
+            speed: 50,
+            deleteSpeed: 50,
+            breakLines: false,
+            loop: true,
+        })
+        .type("Selamat datang di website ini!")
+        .pause(5000)
+        .delete(null)
+
+        .pause(1000)
+
+        .type("Apa yang terjadi hari ini?")
+        .pause(12000)
+        .delete(null)
+
+        .pause(1000)
+
+        .go();
+    </script>
+    <script src="/Ast/Script/script.js"></script>
+</body>
+</html>
