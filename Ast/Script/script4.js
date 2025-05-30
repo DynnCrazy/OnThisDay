@@ -54,12 +54,16 @@ async function fetchData(url) {
                 var bulan = Number(waktu_full.split("-")[1]);
                 var tahun = waktu_full.split("-")[2];
 
-                var waktu_full_text = `${tanggal} ${daftarBulan[(bulan - 1)]} ${tahun}`;
+                if (tahun === "????") {
+                    var waktu_full_text = `${tanggal} ${daftarBulan[(bulan - 1)]}`;
+                } else {
+                    var waktu_full_text = `${tanggal} ${daftarBulan[(bulan - 1)]} ${tahun}`;
+                }
                 
                 theResult += `
                     <div class="bg-transparent w-full h-auto flex justify-center mt-6 mb-8">
                         <div class="bg-transparent w-[20%]">                
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Several_Cartons.jpg/120px-Several_Cartons.jpg" class="w-full mt-[5px]" alt="${waktu_full}">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Several_Cartons.jpg/120px-Several_Cartons.jpg" class="w-full mt-[5px]" alt="${judul_data}">
                         </div>
                         <div class="bg-transparent w-[80%] p-0 pl-6">
                             <div>

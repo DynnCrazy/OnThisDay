@@ -40,16 +40,21 @@ async function fetchData(url) {
         var waktu_bulan = data[i].waktu.split("-")[1];
         var waktu_tahun = data[i].waktu.split("-")[2];
         var waktu_full = data[i].waktu;
+        var waktu_tahun_diketahui = true;
+
+        if (waktu_tahun === "????") {
+            waktu_tahun_diketahui = false;
+        }
 
         if (waktu_tanggal == (dataWaktu.getDate() + whattngl) && waktu_bulan == (dataWaktu.getMonth() + 1)) {
             theResult += `
                 <div class="bg-transparent w-full h-auto flex justify-center mt-6 mb-8">
                     <div class="bg-transparent w-[20%]">                
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Several_Cartons.jpg/120px-Several_Cartons.jpg" class="w-full mt-[5px]" alt="${waktu_full}">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Several_Cartons.jpg/120px-Several_Cartons.jpg" class="w-full mt-[5px]" alt="${judul_data}">
                     </div>
                     <div class="bg-transparent w-[80%] p-0 pl-6">
                         <div>
-                            <h3 class="text-[18px] text-blue-400 font-bold mb-1">[ ${waktu_tahun} ] [ ${dataWaktu.getFullYear() - waktu_tahun} Years ago ] - ${judul_data}</h3>
+                            ${waktu_tahun_diketahui ? `<h3 class="text-[18px] text-blue-400 font-bold mb-1">[ ${waktu_tahun} ] [ ${dataWaktu.getFullYear() - waktu_tahun} Years ago ] - ${judul_data}</h3>` : `<h3 class="text-[18px] text-blue-400 font-bold mb-1">[ ${waktu_tanggal} ${daftarBulan[(Number(waktu_bulan) - 1)]} ] - ${judul_data}</h3>` }
                         </div>
                         <div>
                             <p class="text-[14px] md:text-[16px] text-justify [text-justify:inter-word] break-words hyphens-auto">${deskripsi_data}</p>
