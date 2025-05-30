@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>On This Day: Category</title>
+    <link rel="icon" href="/Ast/Image/icon.png" type="image/png">
+    <link href="/Ast/Style/style.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/typeit@8.7.1/dist/index.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font bg-[#011024]" id="bodyCategory">
+    <div id="particles-js"></div>
+    <div class="fixed top-0 left-0 w-full h-[300vh] bg-[#011024] opacity-1 animasiLoad" id="load"></div>
+
+    <div class="w-full h-[100vh]">
+        <div class="bg-transparent w-full h-[10vh] flex border-b-2 border-[#ffffff05]" id="head">
+        </div>
+
+        <div class="flex justify-center mt-[10vh]">
+            <div class="bg-blue-400 w-[86vw] md:w-[80vw] h-[2px]"></div>
+        </div>
+
+        <div class="m-6">
+            <h1 class="text-2xl md:text-3xl mx-[7vw] md:mx-[10vh] font-bold text-center tracking-wider"><span id="thewaktu">Waktu</span></h1>
+        </div>
+
+        <div class="flex justify-center">
+            <div class="bg-blue-400 w-[86vw] md:w-[80vw] h-[2px]"></div>
+        </div>
+
+        <div class="w-full h-auto bg-transparent md:flex justify-center mt-[10vh]">
+            <div class="bg-transparent w-[86vw] md:w-[60%] mx-[7vw] md:mx-0 h-auto" id="justtoday">
+            </div>
+
+            <div class="bg-transparent w-[9%] h-auto hidden md:flex justify-center">
+                <div class="w-[2px] h-auto bg-blue-400 mt-6"></div>
+            </div>
+
+            <div class="flex md:hidden my-[7vh] justify-center">
+                <div class="bg-blue-400 w-[86vw] md:w-[80vw] h-[2px]"></div>
+            </div>
+
+            <div class="bg-transparent w-[86vw] md:w-[11%] mx-[7vw] md:mx-0 h-auto p-0" id="listkategori">
+            </div>
+        </div>
+
+        <div class="bg-transparent w-full h-[10vh]"></div>
+
+    </div>
+
+    <script src="/Ast/Script/script.js"></script>
+    <script src="/Ast/Script/script4.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+            "number": {
+                "value": 25,
+                "density": {
+                "enable": true,
+                "value_area": 1000
+                }
+            },
+            "color": {
+                "value": "#ffffff"
+            },
+            "shape": {
+                "type": "circle"
+            },
+            "opacity": {
+                "value": 0.05
+            },
+            "size": {
+                "value": 2
+            },
+            "line_linked": {
+                "enable": true,
+                "distance": 250,
+                "color": "#ffffff",
+                "opacity": 0.05,
+                "width": 1
+            },
+            "move": {
+                "enable": true,
+                "speed": 2
+            }
+            },
+            "interactivity": {
+            "events": {
+                "onhover": {
+                "enable": true,
+                "mode": "repulse"
+                }
+            }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+</html>

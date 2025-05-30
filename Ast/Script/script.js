@@ -1,5 +1,12 @@
 const waktu = new Date();
 const daftarBulan = ["Janari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+var isUserPc = false;
+
+if (window.innerWidth > 768) {
+    isUserPc = true
+} else {
+    isUserPc = false;
+}
 
 document.getElementById("head").innerHTML = `
     <div class="bg-transparent w-[20vw] md:w-[10vw] h-full flex justify-center items-center"><a href="/index.html"><img src="/Ast/Image/tag.png" class="w-[100%] md:w-[60%] m-4"></a></div>
@@ -7,7 +14,7 @@ document.getElementById("head").innerHTML = `
         <a href="/index.html"><div class="bg-transparent w-[20%] md:w-[7%] h-full flex justify-center items-center cursor-pointer">Home</div></a>  
         <div class="bg-transparent w-[20%] md:w-[7%] h-full flex justify-center items-center cursor-pointer" onclick="alert('Segera hadir')"><span>About</span></div>  
         <div class="bg-transparent w-[20%] md:w-[7%] h-full flex justify-center items-center cursor-pointer" onclick="alert('Segera hadir')">FAQ</div>
-        <div class="bg-transparent w-[20%] md:w-[7%] h-full flex justify-center items-center cursor-pointer" onclick="alert('Segera hadir')">Api's</div>  
+        ${isUserPc ?  `<div class="bg-transparent w-[20%] md:w-[7%] h-full flex justify-center items-center cursor-pointer" onclick="alert('Segera hadir')">Api's</div>` : ""}  
     </div>
     <div class="bg-transparent w-[7vw] md:w-[7vw] h-full"></div>
 `
