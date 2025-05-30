@@ -12,3 +12,13 @@
     pointer-events: none;
     transition: opacity 0.7s ease;
 }
+
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #011024;
+    z-index: -1;
+    top: 0;
+    left: 0;
+  }

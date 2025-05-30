@@ -22,6 +22,7 @@ async function fetchData(url) {
 (async () => {
     data = await fetchData(url);
     var theResult = '';
+    var theCategory = [];
 
     if (document.getElementById('bodyDate')) {
         document.getElementById("thewaktu").textContent = `${dd} ${daftarBulan[(Number(mm)-1)]}`;
@@ -53,6 +54,35 @@ async function fetchData(url) {
             `;
         }
 
+        var theCateresult = '';
+
+        for(let j = 0; j < data[i].kategori.length; j++) {
+
+            if (!theCategory.includes(data[i].kategori[j]) && waktu_tanggal == dd && waktu_bulan == mm) {
+                var kategoriNameResult = '';
+
+                for (let hb = 0; hb < data[i].kategori[j].length; hb++) {
+
+                    if (hb == 0) {
+                        kategoriNameResult += data[i].kategori[j][hb].toUpperCase();
+                    } else {
+                        kategoriNameResult += data[i].kategori[j][hb].toLowerCase();
+                    }
+            
+                }
+
+                theCategory.push(kategoriNameResult);
+            }
+        }
+
+        theCategory.sort();
+
+        for(let h = 0; h < theCategory.length; h++) {
+            theCateresult += `- <span class="mb-1 cursor-pointer" onclick="goToLinkFromCategory('/category.html?name=${theCategory[h].toLowerCase()}')">${theCategory[h]}</span><br>`;
+        }
+
+        document.getElementById("txtcategory").innerHTML = theCateresult;
+        
     }
 
     if (theResult === '') {

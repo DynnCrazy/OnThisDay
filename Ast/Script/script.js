@@ -2,12 +2,12 @@ const waktu = new Date();
 const daftarBulan = ["Janari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
 
 document.getElementById("head").innerHTML = `
-    <div class="bg-transparent w-[20vw] md:w-[10vw] h-full flex justify-center items-center"><a href="/index.html">OTD</a></div>
+    <div class="bg-transparent w-[20vw] md:w-[10vw] h-full flex justify-center items-center"><a href="/index.html"><img src="/Ast/Image/tag.png" class="w-[100%] md:w-[60%] m-4"></a></div>
     <div class="bg-transparent w-[73vw] md:w-[83vw] h-full flex justify-end">
-        <a href="/index.html"><div class="bg-transparent w-[20%] md:w-[7%] h-full flex justify-center items-center">Home</div></a>  
-        <div class="bg-transparent w-[20%] md:w-[7%] h-full flex justify-center items-center">About</div>  
-        <div class="bg-transparent w-[20%] md:w-[7%] h-full flex justify-center items-center">FAQ</div>
-        <div class="bg-transparent w-[20%] md:w-[7%] h-full flex justify-center items-center">Api's</div>  
+        <a href="/index.html"><div class="bg-transparent w-[20%] md:w-[7%] h-full flex justify-center items-center cursor-pointer">Home</div></a>  
+        <div class="bg-transparent w-[20%] md:w-[7%] h-full flex justify-center items-center cursor-pointer" onclick="alert('Segera hadir')"><span>About</span></div>  
+        <div class="bg-transparent w-[20%] md:w-[7%] h-full flex justify-center items-center cursor-pointer" onclick="alert('Segera hadir')">FAQ</div>
+        <div class="bg-transparent w-[20%] md:w-[7%] h-full flex justify-center items-center cursor-pointer" onclick="alert('Segera hadir')">Api's</div>  
     </div>
     <div class="bg-transparent w-[7vw] md:w-[7vw] h-full"></div>
 `
@@ -24,35 +24,40 @@ if (document.getElementById('bodyToday')) {
 
 if (document.getElementById("listkategori")) {
     document.getElementById("listkategori").innerHTML = `
-        <h3 class="text-[18px] text-blue-400 font-bold mt-6 mb-1">Category:</h3>
-        <p>
-            - <span class="mb-1 cursor-pointer" onclick="goToLinkFromCategory('/category.html?name=sports')">Olahraga</span><br>
-        </p>
+        <div class="w-full flex justify-between md:block md:justify-normal">
+        <div>
+            <h3 class="text-[18px] text-blue-400 font-bold mt-6 mb-1">Category:</h3>
+            <p id="txtcategory">
+            </p>
+        </div>
 
-        <h3 class="text-[18px] text-blue-400 font-bold mt-6 mb-1">On This Date:</h3>
-        <p>
-            - <span class="mb-1 cursor-pointer" onclick="goToLinkFromOnThisDate('/today.html')">Hari ini</span><br>
-            - <span class="mb-1 cursor-pointer" onclick="goToLinkFromOnThisDate('/tomorrow.html')">Besok</span><br>
-            - <span class="mb-1 cursor-pointer" onclick="goToLinkFromOnThisDate('/yesterday.html')">Kemarin</span><br>
-            - <span id="openPicker" class="mb-1 cursor-pointer">Custom</span><br>
+        <div>
+            <h3 class="text-[18px] text-blue-400 font-bold mt-6 mb-1">On This Date:</h3>
+            <p>
+                - <span class="mb-1 cursor-pointer" onclick="goToLinkFromOnThisDate('/today.html')">Hari ini</span><br>
+                - <span class="mb-1 cursor-pointer" onclick="goToLinkFromOnThisDate('/tomorrow.html')">Besok</span><br>
+                - <span class="mb-1 cursor-pointer" onclick="goToLinkFromOnThisDate('/yesterday.html')">Kemarin</span><br>
+                - <span id="openPicker" class="mb-1 cursor-pointer">Custom</span><br>
 
-            <div id="dateModal" class="fixed inset-0 bg-[#011024] bg-opacity-70 items-center justify-center hidden">
-                <div class="bg-blue-400 p-6 py-7 md:py-6 rounded-lg shadow-lg space-y-4 w-[86vw] md:w-[25vw]">
-                    <label for="dateInput" class="block text-white">Pilih tanggal:</label>
-                    <input type="date" id="dateInput" class="border p-2 rounded w-full text-[#011024] outline-none">
+                <div id="dateModal" class="fixed inset-0 bg-[#011024] bg-opacity-70 items-center justify-center hidden">
+                    <div class="bg-blue-400 p-6 py-7 md:py-6 rounded-lg shadow-lg space-y-4 w-[86vw] md:w-[25vw]">
+                        <label for="dateInput" class="block text-white">Pilih tanggal:</label>
+                        <input type="date" id="dateInput" class="border p-2 rounded w-full text-[#011024] outline-none">
 
-                    <div class="flex justify-between space-x-2">
-                        <p>&ensp;</p>
-                        <p>&ensp;</p>
-                        <p>&ensp;</p>
-                        <p>&ensp;</p>
-                        <p id="cancelBtn" class="text-white cursor-pointer hover:text-[#f4f4f4]">Batal</p>
-                        <p>|</p>
-                        <p id="okBtn" class="text-white cursor-pointer hover:text-[#f4f4f4]">OK</p>
+                        <div class="flex justify-between space-x-2">
+                            <p>&ensp;</p>
+                            <p>&ensp;</p>
+                            <p>&ensp;</p>
+                            <p>&ensp;</p>
+                            <p id="cancelBtn" class="text-white cursor-pointer hover:text-[#f4f4f4]">Batal</p>
+                            <p>|</p>
+                            <p id="okBtn" class="text-white cursor-pointer hover:text-[#f4f4f4]">OK</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </p>
+            </p>
+        </div>
+        </div>
     `;
 }
 
@@ -98,3 +103,4 @@ okBtn.addEventListener("click", () => {
         alert("Silakan pilih tanggal terlebih dahulu!");
     }
 });
+
