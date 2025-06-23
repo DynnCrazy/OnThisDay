@@ -1,4 +1,4 @@
-const url = 'https://datadc.netlify.app/data/onthisday/onthisday.json';
+const url = 'https://datadc.netlify.app/data/onthisday/data.json';
 let data = {};
 var loadDataFinish = false;
 const dataWaktu = new Date();
@@ -120,5 +120,23 @@ async function fetchData(url) {
 })();
 
 function finishLoadData() {
-    document.getElementById('load').style.opacity = 0;
+    var waktuMaxBulan30 = [4, 6, 9, 11];
+    var waktuMaxBulan29 = [2];
+    var waktuMaxBulan31 = [1, 3, 5, 7, 8, 10, 12];
+
+    if (document.getElementById('bodyTomorrow')) {
+
+        if (waktuMaxBulan30.includes(Number(dataWaktu.getMonth() + 1)) && Number(dataWaktu.getDate()) == 30) {
+            window.location.href = "/today.html";
+        } else if (waktuMaxBulan29.includes(Number(dataWaktu.getMonth() + 1)) && Number(dataWaktu.getDate()) == 29) {
+            window.location.href = "/today.html";
+        } else if (waktuMaxBulan31.includes(Number(dataWaktu.getMonth() + 1)) && Number(dataWaktu.getDate()) == 31) {
+            window.location.href = "/today.html";
+        } else {
+            document.getElementById('load').style.opacity = 0;
+        }
+
+    } else {
+        document.getElementById('load').style.opacity = 0;
+    }
 }

@@ -1,4 +1,4 @@
-const url = 'https://datadc.netlify.app/data/onthisday/onthisday.json';
+const url = 'https://datadc.netlify.app/data/onthisday/data.json';
 let data = {};
 var loadDataFinish = false;
 const dataWaktu = new Date();
